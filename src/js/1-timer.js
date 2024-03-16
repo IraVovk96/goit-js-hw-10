@@ -71,6 +71,7 @@ startBtn.addEventListener('click', event => {
       return;
     }
 
+    
     const timer = convertMs(timeInterval);
 
     showTime[0].innerText = timer.days.toString().padStart(2, '0');
