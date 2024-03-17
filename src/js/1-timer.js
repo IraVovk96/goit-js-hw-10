@@ -1,6 +1,5 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
@@ -13,12 +12,8 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    console.log(selectedDates[0]);
-  },
-};
-  userSelectedDate = selectedDates[0];
-    timeInterval = userSelectedDate - new Date();
-
+    userSelectedDate = selectedDates[0]; // Зберігаємо вибрану дату
+    timeInterval = userSelectedDate - new Date(); // Обчислюємо інтервал часу
     if (timeInterval < 1) {
       iziToast.error({
         color: 'red',
@@ -29,8 +24,9 @@ const options = {
       startBtn.disabled = false;
       inputTime.disabled = true;
     }
-  
-    function convertMs(ms) {
+  },
+};
+function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
   const minute = second * 60;
@@ -49,31 +45,26 @@ const options = {
   return { days, hours, minutes, seconds };
 }
 
+
 const calendar = flatpickr('#datetime-picker', options);
 const inputTime = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('button');
 const showTime = document.querySelectorAll('.value');
 
 console.log(showTime);
-
 startBtn.disabled = true;
-
 startBtn.addEventListener('click', event => {
   const repeatTime = setInterval(() => {
     timeInterval = userSelectedDate - new Date();
     event.preventDefault();
     inputTime.disabled = true;
-
     if (timeInterval < 1) {
       startBtn.disabled = true;
       inputTime.disabled = false;
       clearInterval(repeatTime);
       return;
     }
-
-    
     const timer = convertMs(timeInterval);
-
     showTime[0].innerText = timer.days.toString().padStart(2, '0');
     showTime[1].innerText = timer.hours.toString().padStart(2, '0');
     showTime[2].innerText = timer.minutes.toString().padStart(2, '0');

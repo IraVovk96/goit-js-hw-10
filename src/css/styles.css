@@ -138,3 +138,15 @@ fieldset {
   max-width: 250px;
   column-gap: 30px;
 }
+
+.form label,
+.form input,
+.form fieldset
+.form button {
+  display: block;
+  
+}
+.form fieldset label {
+  display: inline-block;
+  margin-right: 20px;
+}
