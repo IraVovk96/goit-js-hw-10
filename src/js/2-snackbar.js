@@ -15,7 +15,7 @@ function createPromise(delay, state) {
     });
   }
 
-  document.getElementById("promise-form").addEventListener("submit", function(event) {
+  document.getElementById("form").addEventListener("submit", function(event) {
     event.preventDefault(); 
 
     const delay = parseInt(document.getElementById("delay").value); 
