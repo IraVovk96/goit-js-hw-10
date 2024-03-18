@@ -12,8 +12,8 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    userSelectedDate = selectedDates[0]; // Зберігаємо вибрану дату
-    timeInterval = userSelectedDate - new Date(); // Обчислюємо інтервал часу
+    userSelectedDate = selectedDates[0]; 
+    timeInterval = userSelectedDate - new Date(); 
     if (timeInterval < 1) {
       iziToast.error({
         color: 'red',
